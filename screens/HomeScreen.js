@@ -49,7 +49,7 @@ export default class HomeScreen extends React.Component {
           
                 <View>
                   <Text>{this.props.value.title}</Text>
-                  <Text onPress={() => this.props.value._updateHomeTitle()} style={styles.clickMe}>Click me </Text>
+                  <Text onPress={() => this.props.value._updateHomeTitle({value:{title:'redefined title'},type:'HomeState.title.UPDATE'})} style={styles.clickMe}>Click me </Text>
                 </View>
               
           {/*<View style={styles.getStartedContainer}>

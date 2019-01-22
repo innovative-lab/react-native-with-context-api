@@ -5,6 +5,7 @@ import SettingContext from './Contexts/SettingContext'
 import LinkContext from './Contexts/LinkContext'
 
 import RootState from "./RootState"
+import createStore from "./createStore"
 
 
 class RootProvider extends React.Component {
@@ -12,28 +13,14 @@ class RootProvider extends React.Component {
     super(props)
     this.state = {
       ...RootState,
-      _updateHomeData: this._updateHomeData,
-      _updateHomeTitle: this._updateHomeTitle
     }
   }
 
-  _updateHomeData = (name = HomeData.name, age = HomeData.age) => {
-    this.setState({
-      name: name,
-      age: age
-    })
-  }
-
-  _updateHomeTitle = () =>{
-    this.setState({
-      title: 'title value updated'
-    })
-  }
 
   render() {
     console.log('state from RootProvider.js -- -- ',this.state)
     return (
-      <HomeContext.Provider value={this.state}>
+      <HomeContext.Provider value={createStore(this)}>
         <SettingContext.Provider>
           <LinkContext.Provider>{this.props.children}</LinkContext.Provider>
         </SettingContext.Provider>
